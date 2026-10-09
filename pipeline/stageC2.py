@@ -23,7 +23,7 @@ for n in WN:
     bm=bmesh.new(); bm.from_mesh(src.data); bm.faces.ensure_lookup_table()
     bmesh.ops.delete(bm,geom=[f for f in bm.faces if not sel[f.index]],context='FACES')
     bmesh.ops.delete(bm,geom=[v for v in bm.verts if not v.link_faces],context='VERTS')
-    bmesh.ops.translate(bm,verts=bm.verts[:],vec=-bpy.data.objects[n].location)   # into wheel-local space
+    # coordonnées monde conservées : bpy.ops.object.join les ramène dans l'espace local de la roue (ne pas translater ici)
     bm.to_mesh(src.data); bm.free(); src.location=(0,0,0)
     w=bpy.data.objects[n]; bpy.ops.object.select_all(action='DESELECT'); src.select_set(True); w.select_set(True)
     bpy.context.view_layer.objects.active=w; bpy.ops.object.join()

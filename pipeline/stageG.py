@@ -22,7 +22,7 @@ SHADER={'carpaint':'vehicle_paint1.sps','chrome':'vehicle_mesh.sps','black':'veh
 newmat={}
 import re
 def sollum_mat(old):
-    base=re.sub(r'\.\d+$','',old.name)                      # one Sollumz material per base name (tire.001 -> tire)
+    base=re.sub(r'(\.\d+|_old)+$','',old.name)                      # one Sollumz material per base name (tire.001 -> tire)
     if base in newmat: return newmat[base]
     sh=SHADER.get(base,'vehicle_mesh.sps'); m=create_shader(sh); old.name=old.name+'_old'; m.name=base
     newmat[base]=m; return m

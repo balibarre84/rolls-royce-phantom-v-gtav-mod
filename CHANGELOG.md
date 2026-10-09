@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-10-09
+- Matériaux : correction d'un défaut de nommage (`_old`) qui attribuait `vehicle_mesh` à presque toutes les pièces ; la peinture utilise désormais `vehicle_paint1` partout (capot argenté corrigé), les vitres `vehicle_vehglass`.
+- Peinture : texture neutre claire (teinte noire fournie par la palette du jeu, indice 1 dans `carvariations.meta`), brillance accrue (`pipeline/post.py`).
+- Enjoliveurs : double translation corrigée dans `stageC2.py` (centres de roues correctement placés).
+
 ## 0.1.1 — 2026-10-09
 Corrections issues des essais en jeu de la 0.1.0.
 - Portes, capot et coffre exportés dans le drawable principal (ils étaient traités comme enfants physiques, non rendus par le jeu).

@@ -25,7 +25,7 @@ for m in bpy.data.materials:
     if not b: continue
     saved[m.name]=(tuple(b.inputs['Base Color'].default_value),b.inputs['Metallic'].default_value)
     b.inputs['Metallic'].default_value=0.0
-    if m.name=='carpaint': b.inputs['Base Color'].default_value=(0.0025,0.0025,0.0025,1)   # noir de jais (seule couleur proposée)
+    if m.name=='carpaint': b.inputs['Base Color'].default_value=(0.80,0.80,0.80,1)   # neutre clair : la couleur noire vient de carvariations (palette du jeu)
 if sc.world is None: sc.world=bpy.data.worlds.new('w')
 sc.render.engine='CYCLES'; sc.cycles.device='CPU'; sc.cycles.use_denoising=False
 def select_only(objs):
