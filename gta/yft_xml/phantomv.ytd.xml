@@ -33,4 +33,15 @@
     <Format>D3DFMT_DXT5</Format>
     <FileName>phantom_glass_d.dds</FileName>
   </Item>
+  <Item>
+    <Name>phantom_plate_d</Name>
+    <Unk32 value="0" />
+    <Usage>UNKNOWN</Usage>
+    <ExtraFlags value="0" />
+    <Width value="1024" />
+    <Height value="512" />
+    <MipLevels value="0" />
+    <Format>D3DFMT_DXT1</Format>
+    <FileName>phantom_plate_d.dds</FileName>
+  </Item>
 </TextureDictionary>

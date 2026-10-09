@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3 — 2026-10-09
+- Plaques d'immatriculation britanniques : caractères 3D d'origine remplacés par deux panneaux texturés (avant blanche, arrière jaune, « PV63 PKW », bandeau GB) ; `pipeline/stageP.py`, `pipeline/mkplate.py`.
+
 ## 0.1.2 — 2026-10-09
 - Matériaux : correction d'un défaut de nommage (`_old`) qui attribuait `vehicle_mesh` à presque toutes les pièces ; la peinture utilise désormais `vehicle_paint1` partout (capot argenté corrigé), les vitres `vehicle_vehglass`.
 - Peinture : texture neutre claire (teinte noire fournie par la palette du jeu, indice 1 dans `carvariations.meta`), brillance accrue (`pipeline/post.py`).

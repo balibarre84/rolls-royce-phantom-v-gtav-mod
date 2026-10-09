@@ -4,7 +4,7 @@ from bl_ext.user_default.sollumz.sollumz_properties import SollumType, LODLevel
 bpy.ops.wm.open_mainfile(filepath='/home/claude/work/phantom_sollumz2.blend')
 dg=bpy.context.evaluated_depsgraph_get()
 LODS=((LODLevel.MEDIUM,0.35,'med'),(LODLevel.LOW,0.10,'low'),(LODLevel.VERYLOW,0.03,'vlow'))
-SKIP={'plates'}
+SKIP={'plates','plate_front','plate_rear'}
 tot={'high':0,'med':0,'low':0,'vlow':0}
 for o in [o for o in bpy.data.objects if o.sollum_type==SollumType.DRAWABLE_MODEL]:
     hi=o.sz_lods.get_lod(LODLevel.HIGH).mesh; tot['high']+=len(hi.polygons)

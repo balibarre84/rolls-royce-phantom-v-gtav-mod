@@ -13,12 +13,13 @@ for im,fn in ((body_img,'phantom_body_d'),(wheel_img,'phantom_wheels_d')):
     im.source='FILE'; im.filepath=f'/home/claude/work/tex/{fn}.dds'; im.reload()
     print('img',im.name,im.size[:],im.filepath)
 glass_img=bpy.data.images.load('/home/claude/work/tex/phantom_glass_d.dds'); glass_img.name='phantom_glass_d'
+plate_img=bpy.data.images.load('/home/claude/work/tex/phantom_plate_d.dds'); plate_img.name='phantom_plate_d'
 # ---- Sollumz materials
 SHADER={'carpaint':'vehicle_paint1.sps','chrome':'vehicle_mesh.sps','black':'vehicle_mesh.sps','white':'vehicle_mesh.sps','mirror':'vehicle_mesh.sps',
  'interior_second':'vehicle_interior.sps','interior_third':'vehicle_interior.sps','interior_fourth':'vehicle_interior.sps',
  'clearglass':'vehicle_vehglass.sps','windowglass':'vehicle_vehglass.sps',
  'greenglass':'vehicle_lightsemissive.sps','orangeglass':'vehicle_lightsemissive.sps','redglass':'vehicle_lightsemissive.sps','yellow':'vehicle_lightsemissive.sps',
- 'tire':'vehicle_mesh.sps','rim':'vehicle_mesh.sps','brakedisk':'vehicle_mesh.sps'}
+ 'tire':'vehicle_mesh.sps','LicPlate_uk':'vehicle_mesh.sps','rim':'vehicle_mesh.sps','brakedisk':'vehicle_mesh.sps'}
 newmat={}
 import re
 def sollum_mat(old):
@@ -56,7 +57,7 @@ for o in [o for o in bpy.data.objects if o.type=='MESH' and o.sollum_type!=Sollu
     me=o.data
     for i,s in enumerate(o.material_slots):
         if s.material and s.material.sollum_type!=bpy.types.Material.bl_rna: 
-            nm=sollum_mat(s.material); set_diffuse(nm, glass_img if nm.name in ('clearglass','windowglass') else (wheel_img if o.name.startswith('wheel') else body_img)); s.material=nm
+            nm=sollum_mat(s.material); set_diffuse(nm, plate_img if nm.name=='LicPlate_uk' else glass_img if nm.name in ('clearglass','windowglass') else (wheel_img if o.name.startswith('wheel') else body_img)); s.material=nm
     if not me.uv_layers: create_uv_attr(me,0)
     else:
         me.uv_layers[0].name='UVMap 0'
@@ -77,6 +78,6 @@ for o in [o for o in bpy.data.objects if o.type=='MESH' and o.sollum_type!=Sollu
     o.location=Vector()
     add_child_of_bone_constraint(o,frag,bone)
 td=bpy.context.scene.sz_txds.new_texture_dictionary('phantom')
-td.new_texture(body_img); td.new_texture(wheel_img); td.new_texture(glass_img)
+td.new_texture(body_img); td.new_texture(wheel_img); td.new_texture(glass_img); td.new_texture(plate_img)
 print('built; objects:',[ (o.name,o.sollum_type) for o in bpy.data.objects][:30])
 bpy.ops.wm.save_as_mainfile(filepath='/home/claude/work/phantom_sollumz.blend')
