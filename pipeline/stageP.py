@@ -1,4 +1,4 @@
-# Plaques britanniques : supprime les caractères 3D d'origine, ajoute deux panneaux texturés (avant blanc / arrière jaune)
+# Plaques britanniques en image fixe : supprime la plaque 3D d'origine, ajoute deux panneaux texturés (fond noir, caractères blancs)
 import bpy, bmesh, numpy as np, scipy.sparse as sp
 from scipy.sparse.csgraph import connected_components
 bpy.ops.wm.open_mainfile(filepath='/home/claude/work/phantom_parts_uv.blend')
@@ -13,9 +13,7 @@ for k in range(nc):
     f=np.where(fl==k)[0]; v=co[lab==k]; w=v[:,0].max()-v[:,0].min(); m=matn[f[0]]
     if m=='LicPlate_black' and w>0.4: frames['f' if v[:,1].mean()>0 else 'r']=v
     elif m=='LicPlate_black' or m=='LicPlate_yellow' or (m=='LicPlate_white' and len(f) in (40,48)): kill[f]=True
-bm=bmesh.new(); bm.from_mesh(me); bm.faces.ensure_lookup_table()
-bmesh.ops.delete(bm,geom=[f for f in bm.faces if kill[f.index]],context='FACES')
-bmesh.ops.delete(bm,geom=[v for v in bm.verts if not v.link_faces],context='VERTS'); bm.to_mesh(me); bm.free()
+bpy.data.objects.remove(o,do_unlink=True)   # plus de géométrie 3D de plaque : image fixe uniquement
 mat=bpy.data.materials.new('LicPlate_uk'); mat.use_nodes=True
 for tag,v in frames.items():
     c=v.mean(0); u,s,vt=np.linalg.svd(v-c); n=vt[2]

@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.4 — 2026-10-09
+- Plaques : géométrie 3D supprimée ; deux panneaux texturés en image fixe, fond noir et caractères blancs (« PV63 PKW »), sans bandeau GB ni étoiles (`pipeline/stageP.py`, `pipeline/mkplate.py`).
+
 ## 0.1.3 — 2026-10-09
 - Plaques d'immatriculation britanniques : caractères 3D d'origine remplacés par deux panneaux texturés (avant blanche, arrière jaune, « PV63 PKW », bandeau GB) ; `pipeline/stageP.py`, `pipeline/mkplate.py`.
 
