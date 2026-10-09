@@ -5,8 +5,8 @@
     <Unk32 value="0" />
     <Usage>UNKNOWN</Usage>
     <ExtraFlags value="0" />
-    <Width value="2048" />
-    <Height value="2048" />
+    <Width value="256" />
+    <Height value="256" />
     <MipLevels value="0" />
     <Format>D3DFMT_DXT1</Format>
     <FileName>phantom_body_d.dds</FileName>
@@ -16,8 +16,8 @@
     <Unk32 value="0" />
     <Usage>UNKNOWN</Usage>
     <ExtraFlags value="0" />
-    <Width value="1024" />
-    <Height value="1024" />
+    <Width value="256" />
+    <Height value="256" />
     <MipLevels value="0" />
     <Format>D3DFMT_DXT1</Format>
     <FileName>phantom_wheels_d.dds</FileName>

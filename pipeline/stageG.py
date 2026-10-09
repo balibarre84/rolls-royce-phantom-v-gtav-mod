@@ -7,6 +7,25 @@ from bl_ext.user_default.sollumz.tools.meshhelper import get_color_attr_name, cr
 bpy.ops.wm.open_mainfile(filepath='/home/claude/work/phantom_parts_uv.blend')
 addon_ok=True
 import addon_utils; addon_utils.enable('bl_ext.user_default.sollumz',default_set=True)
+# SMOOTHFIX : normales personnalisées d'import périmées après décimation -> recalcul propre
+for _o in [o for o in bpy.data.objects if o.type=='MESH']:
+    bpy.ops.object.select_all(action='DESELECT'); _o.select_set(True); bpy.context.view_layer.objects.active=_o
+    try: bpy.ops.mesh.customdata_custom_splitnormals_clear()
+    except Exception as _e: print('clear normals',_e)
+    bpy.ops.object.shade_smooth_by_angle(angle=math.radians(40),keep_sharp_edges=False)
+# normales de la haute définition reportées sur le modèle jeu (surface lisse malgré la décimation)
+with bpy.data.libraries.load('/home/claude/work/roles.blend') as (_s,_d): _d.objects=[n for n in _s.objects if n!='glass']
+_hd=[o for o in _d.objects if o is not None]
+for _o in _hd: bpy.context.collection.objects.link(_o)
+bpy.ops.object.select_all(action='DESELECT')
+for _o in _hd: _o.select_set(True)
+bpy.context.view_layer.objects.active=_hd[0]; bpy.ops.object.join(); HD=bpy.context.view_layer.objects.active; HD.name='HD_all'
+for _o in [o for o in bpy.data.objects if o.type=='MESH' and o is not HD and not o.name.startswith('plate_') and not o.name.startswith('door_') and o.name not in ('glass','lights','plates')]:
+    bpy.ops.object.select_all(action='DESELECT'); _o.select_set(True); bpy.context.view_layer.objects.active=_o
+    md=_o.modifiers.new('dt','DATA_TRANSFER'); md.object=HD; md.use_loop_data=True; md.data_types_loops={'CUSTOM_NORMAL'}
+    md.loop_mapping='POLYINTERP_LNORPROJ'; md.mix_factor=1.0; md.use_object_transform=True; md.max_distance=0.03; md.use_max_distance=True
+    bpy.ops.object.modifier_apply(modifier='dt')
+bpy.data.objects.remove(HD,do_unlink=True)
 NAME='phantom'
 body_img=bpy.data.images['phantom_body_d']; wheel_img=bpy.data.images['phantom_wheels_d']
 for im,fn in ((body_img,'phantom_body_d'),(wheel_img,'phantom_wheels_d')):

@@ -10,7 +10,9 @@ fl=lab[pv[:,0]]
 matn=np.array([o.material_slots[p.material_index].material.name for p in me.polygons])
 frames={}; kill=np.zeros(len(pv),bool)
 for k in range(nc):
-    f=np.where(fl==k)[0]; v=co[lab==k]; w=v[:,0].max()-v[:,0].min(); m=matn[f[0]]
+    f=np.where(fl==k)[0]
+    if len(f)==0: continue
+    v=co[lab==k]; w=v[:,0].max()-v[:,0].min(); m=matn[f[0]]
     if m=='LicPlate_black' and w>0.4: frames['f' if v[:,1].mean()>0 else 'r']=v
     elif m=='LicPlate_black' or m=='LicPlate_yellow' or (m=='LicPlate_white' and len(f) in (40,48)): kill[f]=True
 bpy.data.objects.remove(o,do_unlink=True)   # plus de géométrie 3D de plaque : image fixe uniquement

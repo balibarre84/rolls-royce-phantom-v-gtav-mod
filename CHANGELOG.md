@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 — 2026-10-09
+- Surfaces : normales personnalisées d'import périmées supprimées, puis normales de la haute définition reportées sur le modèle (carrosserie lisse ; portes lissées par angle).
+- Textures : palette de couleurs unies (`pipeline/stageD2.py`) à la place de l'atlas UV cuit ; supprime le mélange gris/noir des pneus.
+- Plaques : image fixe, fond noir et caractères blancs, sans bandeau GB (`stageP.py`, `mkplate.py`).
+
 ## 0.1.4 — 2026-10-09
 - Plaques : géométrie 3D supprimée ; deux panneaux texturés en image fixe, fond noir et caractères blancs (« PV63 PKW »), sans bandeau GB ni étoiles (`pipeline/stageP.py`, `pipeline/mkplate.py`).
 
