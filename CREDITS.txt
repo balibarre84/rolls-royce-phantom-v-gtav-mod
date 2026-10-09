@@ -1,0 +1,2 @@
+This work is based on "Rolls Royce Phantom Park Ward Limo HQ Interior" (https://sketchfab.com/3d-models/rolls-royce-phantom-park-ward-limo-hq-interior-6450ca6444354483ad67fe7a6e311927) by Nieve5677 (https://sketchfab.com/iori308408) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/).
+Modifications: scaled to metres, re-oriented (front = +Y), split into parts, decimated to about 150,000 triangles.

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SSetupData>
+  <deviceName>dlc_phantomv</deviceName>
+  <datFile>content.xml</datFile>
+  <timeStamp>01/01/2026 00:00:00</timeStamp>
+  <nameHash>phantomv</nameHash>
+  <contentChangeSets />
+  <contentChangeSetGroups>
+    <Item>
+      <NameHash>GROUP_STARTUP</NameHash>
+      <ContentChangeSets>
+        <Item>PHANTOMV_AUTOGEN</Item>
+      </ContentChangeSets>
+    </Item>
+  </contentChangeSetGroups>
+  <startupScript />
+  <scriptCallstackSize value="0" />
+  <type>EXTRACONTENT_COMPAT_PACK</type>
+  <order value="1000" />
+  <minimumConstrainedVersion value="0" />
+  <isLevelPack value="false" />
+  <hasHDPatch value="false" />
+</SSetupData>

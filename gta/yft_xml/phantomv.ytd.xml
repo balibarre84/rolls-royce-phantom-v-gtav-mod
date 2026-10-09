@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TextureDictionary>
+  <Item>
+    <Name>phantom_body_d</Name>
+    <Unk32 value="0" />
+    <Usage>UNKNOWN</Usage>
+    <ExtraFlags value="0" />
+    <Width value="2048" />
+    <Height value="2048" />
+    <MipLevels value="0" />
+    <Format>D3DFMT_DXT1</Format>
+    <FileName>phantom_body_d.dds</FileName>
+  </Item>
+  <Item>
+    <Name>phantom_wheels_d</Name>
+    <Unk32 value="0" />
+    <Usage>UNKNOWN</Usage>
+    <ExtraFlags value="0" />
+    <Width value="1024" />
+    <Height value="1024" />
+    <MipLevels value="0" />
+    <Format>D3DFMT_DXT1</Format>
+    <FileName>phantom_wheels_d.dds</FileName>
+  </Item>
+</TextureDictionary>
