@@ -1,0 +1,11 @@
+NOM D'AFFICHAGE DU VÉHICULE — entrées à ajouter dans global.gxt2 (langue : américain, et éventuellement française)
+
+Clé (gameName, vehicles.meta)   Texte
+PHANTOMV                        Rolls-Royce Phantom V (Park Ward)
+ROLLS                           Rolls-Royce
+
+Procédure (OpenIV, mode édition activé) :
+1. Copier le fichier global.gxt2 de la langue utilisée (x64b.rpf > data > lang > american.rpf ; le chemin exact peut varier selon la version du jeu) vers le même chemin dans le dossier « mods ».
+2. Ouvrir ce fichier copié dans l'éditeur de texte d'OpenIV.
+3. Ajouter les deux entrées ci-dessus (clé en MAJUSCULES, texte exact avec majuscules, tiret et parenthèses), puis enregistrer.
+4. Répéter pour chaque langue souhaitée (french.rpf, par exemple).

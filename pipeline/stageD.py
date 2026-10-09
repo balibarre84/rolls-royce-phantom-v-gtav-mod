@@ -7,6 +7,17 @@ OUT='/home/claude/work/tex/'
 GROUPS={'body':(['chassis','door_dside_f','door_pside_f','door_dside_r','door_pside_r','bonnet','boot','interior','lights','plates'],2048),
         'wheels':(['wheel_lf','wheel_rf','wheel_lr','wheel_rr'],1024)}
 loc0={o.name:o.location.copy() for o in bpy.data.objects}
+# ---- haute définition (source des normales)
+pre=set(bpy.data.objects.keys())
+with bpy.data.libraries.load('/home/claude/work/roles.blend') as (src,dst):
+    dst.objects=[n for n in src.objects if n!='glass']
+hd=[o for o in dst.objects if o is not None]
+for o in hd:
+    bpy.context.collection.objects.link(o); o.name='HD_'+o.name
+bpy.ops.object.select_all(action='DESELECT')
+for o in hd: o.select_set(True)
+bpy.context.view_layer.objects.active=hd[0]; bpy.ops.object.join(); HD=bpy.context.view_layer.objects.active; HD.name='HD_all'
+log('HD faces',len(HD.data.polygons)); HD.hide_render=False
 # temporary material tweaks for the albedo bake
 saved={}
 for m in bpy.data.materials:
@@ -14,7 +25,7 @@ for m in bpy.data.materials:
     if not b: continue
     saved[m.name]=(tuple(b.inputs['Base Color'].default_value),b.inputs['Metallic'].default_value)
     b.inputs['Metallic'].default_value=0.0
-    if m.name=='carpaint': b.inputs['Base Color'].default_value=(0.78,0.78,0.78,1)   # neutral: colour comes from carcols in game
+    if m.name=='carpaint': b.inputs['Base Color'].default_value=(0.0025,0.0025,0.0025,1)   # noir de jais (seule couleur proposée)
 if sc.world is None: sc.world=bpy.data.worlds.new('w')
 sc.render.engine='CYCLES'; sc.cycles.device='CPU'; sc.cycles.use_denoising=False
 def select_only(objs):
@@ -37,8 +48,10 @@ for gname,(names,res) in GROUPS.items():
     # bake
     mats=[s.material for s in J.material_slots if s.material]
     imgs={}
-    for kind in ('diff','ao'):
-        im=bpy.data.images.new(f'phantom_{gname}_{kind}',res,res,alpha=False); im.colorspace_settings.name='sRGB' if kind=='diff' else 'Non-Color'; imgs[kind]=im
+    for kind in ('diff','nrm'):
+        im=bpy.data.images.new(f'phantom_{gname}_{kind}',res,res,alpha=False); im.colorspace_settings.name='sRGB' if kind=='diff' else 'Non-Color'
+        if kind=='nrm': im.generated_color=(0.5,0.5,1,1)
+        imgs[kind]=im
     def bake(kind,btype,samples):
         for m in mats:
             nt=m.node_tree; n=nt.nodes.get('BAKE_IMG') or nt.nodes.new('ShaderNodeTexImage'); n.name='BAKE_IMG'
@@ -49,10 +62,19 @@ for gname,(names,res) in GROUPS.items():
             sc.render.bake.use_pass_direct=False; sc.render.bake.use_pass_indirect=False; sc.render.bake.use_pass_color=True
         select_only([J]); bpy.ops.object.bake(type=btype); log(gname,kind,'baked')
     bake('diff','DIFFUSE',4)
-    sc.world.light_settings.distance=0.7
-    bake('ao','AO',24)
-    d=np.array(imgs['diff'].pixels[:]).reshape(res,res,4); a=np.array(imgs['ao'].pixels[:]).reshape(res,res,4)
-    f=d.copy(); f[...,:3]=d[...,:3]*(0.30+0.70*a[...,:1]); f[...,3]=1
+    # normales : HD (sélectionnée) -> modèle jeu (actif)
+    sc.render.bake.use_selected_to_active=True; sc.render.bake.cage_extrusion=0.008; sc.render.bake.max_ray_distance=0.012
+    sc.render.bake.normal_space='TANGENT'; sc.render.bake.margin=8
+    for m in mats:
+        nt=m.node_tree; n=nt.nodes['BAKE_IMG']; n.image=imgs['nrm']; nt.nodes.active=n
+    sc.cycles.samples=1
+    bpy.ops.object.select_all(action='DESELECT'); HD.select_set(True); J.select_set(True); bpy.context.view_layer.objects.active=J
+    bpy.ops.object.bake(type='NORMAL'); log(gname,'normals baked')
+    sc.render.bake.use_selected_to_active=False
+    nn=np.array(imgs['nrm'].pixels[:]).reshape(res,res,4); nn[...,1]=1-nn[...,1]; nn[...,3]=1      # vert inversé (convention DirectX de GTA V)
+    nim=bpy.data.images.new(f'phantom_{gname}_n',res,res,alpha=False); nim.colorspace_settings.name='Non-Color'; nim.pixels=nn.ravel(); nim.filepath_raw=OUT+f'phantom_{gname}_n.png'; nim.file_format='PNG'; nim.save()
+    d=np.array(imgs['diff'].pixels[:]).reshape(res,res,4)
+    f=d.copy(); f[...,3]=1
     fin=bpy.data.images.new(f'phantom_{gname}_d',res,res,alpha=False); fin.pixels=f.ravel(); fin.filepath_raw=OUT+f'phantom_{gname}_d.png'; fin.file_format='PNG'; fin.save()
     imgs['diff'].filepath_raw=OUT+f'{gname}_albedo_raw.png'
     # wire texture into each material
@@ -73,6 +95,7 @@ for gname,(names,res) in GROUPS.items():
         select_only([o]); bpy.ops.object.material_slot_remove_unused()
     bpy.data.objects.remove(J,do_unlink=True)
     log(gname,'split done')
+bpy.data.objects.remove(HD,do_unlink=True)
 for mn,(c,me_) in saved.items():
     b=bpy.data.materials[mn].node_tree.nodes['Principled BSDF']; b.inputs['Metallic'].default_value=me_
 bpy.ops.wm.save_as_mainfile(filepath='/home/claude/work/phantom_parts_uv.blend'); log('saved')

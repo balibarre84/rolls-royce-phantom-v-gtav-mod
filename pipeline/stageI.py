@@ -42,10 +42,5 @@ for n in PHYS[1:]:
         bo=create_bound_box(); bo.scale=tuple(d)
     bo.name=n+'.col'; bo.data.materials.append(cmat); bo.parent=comp
     add_child_of_bone_constraint(bo,frag,n); bo.location=Vector(c-bonepos[n]); bo.child_properties.mass=MASS[n]
-    if n.startswith(('door','bonnet','boot')):
-        o.sollumz_is_physics_child_mesh=True
-        off=c-bonepos[n]                       # model origin = bound centre (Sollumz adds the bound offset as child matrix)
-        co=np.empty(len(o.data.vertices)*3,np.float32); o.data.vertices.foreach_get('co',co); co=co.reshape(-1,3)-off.astype(np.float32)
-        o.data.vertices.foreach_set('co',co.ravel()); o.data.update(); o.location=Vector(off)
 bpy.ops.wm.save_as_mainfile(filepath='/home/claude/work/phantom_sollumz2.blend')
 print('ok')

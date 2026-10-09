@@ -22,4 +22,15 @@
     <Format>D3DFMT_DXT1</Format>
     <FileName>phantom_wheels_d.dds</FileName>
   </Item>
+  <Item>
+    <Name>phantom_glass_d</Name>
+    <Unk32 value="0" />
+    <Usage>UNKNOWN</Usage>
+    <ExtraFlags value="0" />
+    <Width value="16" />
+    <Height value="16" />
+    <MipLevels value="0" />
+    <Format>D3DFMT_DXT5</Format>
+    <FileName>phantom_glass_d.dds</FileName>
+  </Item>
 </TextureDictionary>
