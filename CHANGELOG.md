@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.11 — 2026-11-05
+Corrections après essai en jeu de la 0.1.10 (pneus invisibles, portes au centre du véhicule, capot et coffre disparus, centres de roues qui tournent autour de la voiture). Non vérifié en jeu.
+- Cause probable : depuis la 0.1.8, le drawable contenait un modèle « skinné » (les vitres) mélangé à des modèles rigides (portes, capot, coffre, roues) dessinés à l'origine du véhicule. Tout le véhicule est maintenant un seul modèle skinné, comme le pack citroends23 : chaque pièce est pondérée sur son os, sommets en coordonnées du squelette (`pipeline/stageU.py`). Vérifié dans l'export : les roues sont centrées sur leur os, triangles inchangés (147 752 en haute définition), 10 vitres cassables, 6 limites de rotation.
+- Chrome comme le pack citroends23 (shader `vehicle_mesh`, couleur très sombre `krom2`, brillance claire `krom2_s`, relief `blank_normal`, saleté `vehicle_genericmud_car`) sur les matériaux `chrome` et `rim` ; `krom2` et `krom2_s` ajoutés au `.ytd.xml`, à `gta/tex/` et à `gta/yft_xml/phantomv/` (`pipeline/stageV.py`, `pipeline/post.py`).
+- Conducteur avancé de 10 cm (`seat_dside_f` : y = 0,25).
+
 ## 0.1.10 — 2026-11-05
 Tickets Jira MOD-1, MOD-2, MOD-7 (`pipeline/stageT.py`). Non vérifié en jeu.
 - MOD-1, pneus qui clignotent : 247 faces dupliquées (coïncidentes, même sens, donc z-fighting) supprimées dans les roues, dont 239 sur la roue arrière droite ; matériau des pneus passé de `vehicle_mesh` à `vehicle_tire`, avec les textures de relief, de brillance et de saleté des pneus d'origine (`vehicle_generic_tyrewall_*`, fournies par `vehshare`).

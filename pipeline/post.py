@@ -15,3 +15,12 @@ for k, v in (('LodDistHigh', 9998), ('LodDistMed', 9998), ('LodDistLow', 9998), 
 open(p, 'w', encoding='utf-8').write(s)
 p = D + 'phantomv.ytd.xml'; t = open(p).read(); a = t.find('phantom_glass_d'); b = t.find('D3DFMT_DXT1', a)
 if b > 0: t = t[:b] + 'D3DFMT_DXT5' + t[b + 11:]; open(p, 'w').write(t)
+# textures de chrome du pack citroends23 (stageV) : entrées ajoutées au dictionnaire de textures si absentes
+KROM = {'krom2': (256, 256, 7, 'X32, X64, X128, UNK24'), 'krom2_s': (256, 256, 7, 'X32, X64, X128, UNK24')}
+t = open(p).read()
+for n, (w, h, m, uf) in KROM.items():
+    if '<Name>%s</Name>' % n not in t:
+        e = (' <Item>\n  <Name>%s</Name>\n  <Unk32 value="128" />\n  <Usage>DEFAULT</Usage>\n  <UsageFlags>%s</UsageFlags>\n  <ExtraFlags value="0" />\n'
+             '  <Width value="%d" />\n  <Height value="%d" />\n  <MipLevels value="%d" />\n  <Format>D3DFMT_DXT1</Format>\n  <FileName>%s.dds</FileName>\n </Item>\n') % (n, uf, w, h, m, n)
+        t = t.replace('</TextureDictionary>', e + '</TextureDictionary>')
+open(p, 'w').write(t)

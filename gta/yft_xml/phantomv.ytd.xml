@@ -41,7 +41,31 @@
     <Width value="1024" />
     <Height value="512" />
     <MipLevels value="0" />
-    <Format>D3DFMT_DXT1</Format>
+    <Format>D3DFMT_DXT5</Format>
     <FileName>phantom_plate_d.dds</FileName>
   </Item>
+ <Item>
+  <Name>krom2</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>krom2.dds</FileName>
+ </Item>
+ <Item>
+  <Name>krom2_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>krom2_s.dds</FileName>
+ </Item>
 </TextureDictionary>
