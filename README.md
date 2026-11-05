@@ -3,7 +3,7 @@
 Véhicule addon pour GTA V (mode solo, PC) : Rolls-Royce Phantom V limousine Park Ward (1963).
 Nom de modèle en jeu : `phantomv`.
 
-**Version actuelle : 0.1.11** (voir `CHANGELOG.md`)
+**Version actuelle : 1.0.0** (voir `CHANGELOG.md`)
 
 ## Contenu
 | Dossier | Rôle |
