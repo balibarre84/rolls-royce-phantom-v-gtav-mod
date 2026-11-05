@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10 — 2026-11-05
+Tickets Jira MOD-1, MOD-2, MOD-7 (`pipeline/stageT.py`). Non vérifié en jeu.
+- MOD-1, pneus qui clignotent : 247 faces dupliquées (coïncidentes, même sens, donc z-fighting) supprimées dans les roues, dont 239 sur la roue arrière droite ; matériau des pneus passé de `vehicle_mesh` à `vehicle_tire`, avec les textures de relief, de brillance et de saleté des pneus d'origine (`vehicle_generic_tyrewall_*`, fournies par `vehshare`).
+- MOD-7, intérieur noir : les matériaux `interior_*` utilisaient la couche de peinture secondaire (`matDiffuseColor` = 2,2,2) et prenaient donc la couleur secondaire (noire) ; ils passent à la couche « défaut » (2,5,5) et affichent les couleurs de la texture (crème, beige, brun).
+- MOD-2, conducteur : le volant du modèle est à droite ; os `seat_dside_f` et `seat_pside_f` inversés (conducteur à droite, x = ±0,38) et relevés de 10 cm (z = 0,72), os `steeringwheel` placé sur le volant (0,41 ; 0,45 ; 1,09).
+
 ## 0.1.9 — 2026-11-05
 - Limites de rotation (`Joints` / `RotationLimits`) des 4 portes, du capot et du coffre, reprises du pack de référence citroends23 (portes : axe Z, ±1,13 rad ; capot : axe X, 0 à 0,91 rad ; coffre : axe X, −1,06 à 0 rad). Script : `pipeline/stageS.py`.
 - Non vérifié en jeu.
