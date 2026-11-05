@@ -4,11 +4,54 @@
     <Item>
       <modelName>phantomv</modelName>
       <colors>
+        <!-- Noir (primaire = secondaire : toit et capot identiques à la caisse) -->
         <Item>
           <indices content="char_array">
             1
             1
             1
+            65
+            64
+            111
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <!-- Blanc -->
+        <Item>
+          <indices content="char_array">
+            111
+            111
+            111
+            65
+            64
+            111
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <!-- Bi-ton : caisse bleu nuit (61), toit et capot argent (4) -->
+        <Item>
+          <indices content="char_array">
+            61
+            4
+            61
             65
             64
             111

@@ -1,12 +1,17 @@
-# Post-traitement de l'export : brillance de la peinture (vehicle_paint1) + texture de vitre DXT5
-import re,sys
-D='/home/claude/deliver2/'
-p=D+'yft_xml/phantomv.yft.xml'; s=open(p,encoding='utf-8').read()
-i=s.find('<Name>vehicle_paint1</Name>'); j=s.find('</Item>\n        <Item>',i)
-blk=s[i:j]
-def setv(b,name,x):
-    return re.sub(r'(<Item name="%s" type="Vector" x=")[^"]*"'%name, r'\g<1>%s"'%x, b)
-for k,v in (('specularIntensityMult','0.9'),('specMapIntMask','0.0'),('reflectivePower','1.0'),('specularFalloffMult','250.0')): blk=setv(blk,k,v)
-s=s[:i]+blk+s[j:]; open(p,'w',encoding='utf-8').write(s)
-p=D+'yft_xml/phantomv.ytd.xml'; t=open(p).read(); a=t.find('phantom_glass_d'); b=t.find('D3DFMT_DXT1',a)
-if b>0: t=t[:b]+'D3DFMT_DXT5'+t[b+11:]; open(p,'w').write(t)
+# Post-traitement de l'export Sollumz (CodeWalker XML) : brillance de TOUTES les peintures (vehicle_paint1),
+# distances/drapeaux de LOD du drawable (comme le pack de référence : 9998 / 3) et texture de vitre DXT5.
+# Usage : python post.py <dossier contenant phantomv.yft.xml et phantomv.ytd.xml>
+import re, sys
+D = sys.argv[-1].rstrip('/') + '/'
+p = D + 'phantomv.yft.xml'; s = open(p, encoding='utf-8').read()
+def setv(b, name, x): return re.sub(r'(<Item name="%s" type="Vector" x=")[^"]*"' % name, r'\g<1>%s"' % x, b)
+def paint(m):
+    b = m.group(0)
+    for k, v in (('specularIntensityMult', '0.9'), ('specMapIntMask', '0.0'), ('reflectivePower', '1.0'), ('specularFalloffMult', '250.0')): b = setv(b, k, v)
+    return b
+s, n = re.subn(r'<Name>vehicle_paint1</Name>.*?</Parameters>', paint, s, flags=re.S); print('shaders de peinture :', n)
+for k, v in (('LodDistHigh', 9998), ('LodDistMed', 9998), ('LodDistLow', 9998), ('LodDistVlow', 9998), ('FlagsHigh', 3), ('FlagsMed', 3), ('FlagsLow', 3), ('FlagsVlow', 3)):
+    s, c = re.subn(r'(<%s value=")[^"]*(")' % k, r'\g<1>%s\2' % v, s, count=1); assert c == 1, k
+open(p, 'w', encoding='utf-8').write(s)
+p = D + 'phantomv.ytd.xml'; t = open(p).read(); a = t.find('phantom_glass_d'); b = t.find('D3DFMT_DXT1', a)
+if b > 0: t = t[:b] + 'D3DFMT_DXT5' + t[b + 11:]; open(p, 'w').write(t)

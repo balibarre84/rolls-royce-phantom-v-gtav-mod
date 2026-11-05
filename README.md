@@ -3,7 +3,7 @@
 Véhicule addon pour GTA V (mode solo, PC) : Rolls-Royce Phantom V limousine Park Ward (1963).
 Nom de modèle en jeu : `phantomv`.
 
-**Version actuelle : 0.1.7** (voir `CHANGELOG.md`)
+**Version actuelle : 0.1.8** (voir `CHANGELOG.md`)
 
 ## Contenu
 | Dossier | Rôle |
@@ -13,7 +13,7 @@ Nom de modèle en jeu : `phantomv`.
 | `gta/dlc/` | `content.xml`, `setup2.xml` |
 | `gta/tex/` | Textures DDS (carrosserie 2K, roues 1K) |
 | `gta/blend/` | Scène Blender + Sollumz 2.9.0 (`phantomv_sollumz.blend`) |
-| `pipeline/` | Scripts Blender (bpy) ayant produit le modèle, étape par étape |
+| `pipeline/` | Scripts Blender (bpy) ayant produit le modèle, étape par étape (`stageQ.py` : vitres cassables ; `stageR.py` : peinture bi-ton ; `post.py` : post-traitement de l'export) |
 | `docs/` | Gabarit (blueprint) et images de contrôle |
 
 ## Installation (résumé)
@@ -23,7 +23,7 @@ Nom de modèle en jeu : `phantomv`.
 4. Faire apparaître le véhicule avec le nom `phantomv` (mode solo uniquement).
 
 ## État connu (0.1.0)
-Voir `CHANGELOG.md`. Problèmes constatés en jeu : portes, capot et coffre invisibles, roue avant gauche absente, enjoliveurs de roues non solidaires des roues.
+Voir `CHANGELOG.md`. Problèmes constatés en jeu avant la 0.1.1 : portes, capot et coffre invisibles, roue avant gauche absente, enjoliveurs de roues non solidaires des roues.
 
 ## Crédits et licence
 Modèle d'origine : « Rolls Royce Phantom Park Ward Limo HQ Interior » par **Nieve5677**, licence **CC-BY 4.0**

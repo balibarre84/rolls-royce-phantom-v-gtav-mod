@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.8 — 2026-11-05
+- Vitres cassables : le verre est découpé en 10 vitres (pare-brise, lunette, 2 × 4 vitres latérales) rattachées chacune à un os physique (`window_lf`, `window_lr`, `window_rf`, `window_rr`, `misc_a` à `misc_d`, `windscreen`, `windscreen_r`) avec collision « fenêtre de véhicule » (mode Sollumz « Simple », sans shattermap). Le `.yft.xml` contient maintenant `VehicleGlassWindows` (10 entrées), 21 enfants physiques et 37 os. Les vitres de portes suivent leur porte. Script : `pipeline/stageQ.py`.
+- Peinture bi-ton : nouveau matériau `carpaint_secondary` (couche de peinture SECONDAIRE) sur le capot et le toit (`pipeline/stageR.py`). Trois couleurs dans `carvariations.meta` : noir, blanc, bi-ton (caisse bleu nuit, toit et capot argent).
+- `LodDist*` = 9998 et `Flags*` = 3 dans le drawable, définis par `pipeline/stageR.py` et `pipeline/post.py` ; `post.py` applique la brillance à toutes les peintures et prend le dossier d'export en argument.
+- Non vérifié en jeu.
+
 ## 0.1.7 — 2026-11-05
 Alignement sur le pack de référence `citroends23` (fichiers fournis).
 - DLC : chemins à plat `data/` dans `content.xml`, ajout de `dlctext.meta` (`TEXTFILE_METAFILE`), `order` = 9 dans `setup2.xml`.
