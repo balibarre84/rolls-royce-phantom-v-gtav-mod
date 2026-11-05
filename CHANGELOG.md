@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.9 — 2026-11-05
+- Limites de rotation (`Joints` / `RotationLimits`) des 4 portes, du capot et du coffre, reprises du pack de référence citroends23 (portes : axe Z, ±1,13 rad ; capot : axe X, 0 à 0,91 rad ; coffre : axe X, −1,06 à 0 rad). Script : `pipeline/stageS.py`.
+- Non vérifié en jeu.
+
 ## 0.1.8 — 2026-11-05
 - Vitres cassables : le verre est découpé en 10 vitres (pare-brise, lunette, 2 × 4 vitres latérales) rattachées chacune à un os physique (`window_lf`, `window_lr`, `window_rf`, `window_rr`, `misc_a` à `misc_d`, `windscreen`, `windscreen_r`) avec collision « fenêtre de véhicule » (mode Sollumz « Simple », sans shattermap). Le `.yft.xml` contient maintenant `VehicleGlassWindows` (10 entrées), 21 enfants physiques et 37 os. Les vitres de portes suivent leur porte. Script : `pipeline/stageQ.py`.
 - Peinture bi-ton : nouveau matériau `carpaint_secondary` (couche de peinture SECONDAIRE) sur le capot et le toit (`pipeline/stageR.py`). Trois couleurs dans `carvariations.meta` : noir, blanc, bi-ton (caisse bleu nuit, toit et capot argent).

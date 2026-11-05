@@ -3,7 +3,7 @@
 Véhicule addon pour GTA V (mode solo, PC) : Rolls-Royce Phantom V limousine Park Ward (1963).
 Nom de modèle en jeu : `phantomv`.
 
-**Version actuelle : 0.1.8** (voir `CHANGELOG.md`)
+**Version actuelle : 0.1.9** (voir `CHANGELOG.md`)
 
 ## Contenu
 | Dossier | Rôle |
@@ -13,7 +13,7 @@ Nom de modèle en jeu : `phantomv`.
 | `gta/dlc/` | `content.xml`, `setup2.xml` |
 | `gta/tex/` | Textures DDS (carrosserie 2K, roues 1K) |
 | `gta/blend/` | Scène Blender + Sollumz 2.9.0 (`phantomv_sollumz.blend`) |
-| `pipeline/` | Scripts Blender (bpy) ayant produit le modèle, étape par étape (`stageQ.py` : vitres cassables ; `stageR.py` : peinture bi-ton ; `post.py` : post-traitement de l'export) |
+| `pipeline/` | Scripts Blender (bpy) ayant produit le modèle, étape par étape (`stageQ.py` : vitres cassables ; `stageR.py` : peinture bi-ton ; `stageS.py` : limites de rotation ; `post.py` : post-traitement de l'export) |
 | `docs/` | Gabarit (blueprint) et images de contrôle |
 
 ## Installation (résumé)
