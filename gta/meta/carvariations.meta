@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CVehicleModelInfoVarGlobal>
-  <Kits />
-  <Colors />
-  <Variations>
+<CVehicleModelInfoVariation>
+  <variationData>
     <Item>
       <modelName>phantomv</modelName>
       <colors>
-        <Item><indices content="char_array">1 1 0 0</indices><liveries><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /><Item value="false" /></liveries></Item>
+        <Item>
+          <indices content="char_array">
+            1
+            1
+            1
+            65
+            64
+            111
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
       </colors>
       <kits />
       <windowsWithExposedEdges />
       <plateProbabilities>
         <Probabilities>
-          <Item><Name>Standard Plate</Name><Value value="100" /></Item>
+          <Item>
+            <Name>Standard Plate</Name>
+            <Value value="100" />
+          </Item>
         </Probabilities>
       </plateProbabilities>
       <lightSettings value="0" />
       <sirenSettings value="0" />
     </Item>
-  </Variations>
-</CVehicleModelInfoVarGlobal>
+  </variationData>
+</CVehicleModelInfoVariation>

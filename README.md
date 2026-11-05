@@ -3,7 +3,7 @@
 Véhicule addon pour GTA V (mode solo, PC) : Rolls-Royce Phantom V limousine Park Ward (1963).
 Nom de modèle en jeu : `phantomv`.
 
-**Version actuelle : 0.1.0** (voir `CHANGELOG.md`)
+**Version actuelle : 0.1.7** (voir `CHANGELOG.md`)
 
 ## Contenu
 | Dossier | Rôle |
@@ -18,7 +18,7 @@ Nom de modèle en jeu : `phantomv`.
 
 ## Installation (résumé)
 1. Décompresser `phantomv.yft.xml.xz`, importer le `.yft.xml` et le `.ytd.xml` dans CodeWalker (Import XML) pour obtenir `phantomv.yft` et `phantomv.ytd`.
-2. Avec OpenIV (mode édition, dossier `mods`) : créer `mods/update/x64/dlcpacks/phantomv/dlc.rpf` contenant `content.xml`, `setup2.xml`, `x64/vehicles.rpf` (le `.yft` et le `.ytd`) et les quatre `.meta` dans `common/data/…`.
+2. Avec OpenIV (mode édition, dossier `mods`) : créer `mods/update/x64/dlcpacks/phantomv/dlc.rpf` contenant `content.xml`, `setup2.xml`, `x64/vehicles.rpf` (le `.yft` et le `.ytd`) et les cinq `.meta` (`vehicles`, `handling`, `carvariations`, `carcols`, `dlctext`) dans `data/`.
 3. Ajouter `<Item>dlcpacks:/phantomv/</Item>` dans `mods/update/update.rpf/common/data/dlclist.xml`.
 4. Faire apparaître le véhicule avec le nom `phantomv` (mode solo uniquement).
 

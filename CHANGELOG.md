@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.7 — 2026-11-05
+Alignement sur le pack de référence `citroends23` (fichiers fournis).
+- DLC : chemins à plat `data/` dans `content.xml`, ajout de `dlctext.meta` (`TEXTFILE_METAFILE`), `order` = 9 dans `setup2.xml`.
+- `carvariations.meta` : schéma corrigé (`CVehicleModelInfoVariation` > `variationData`), indices de peinture `1 1 1 65 64 111`.
+- `vehicles.meta` : balise `vehicleMakeName`, `lodDistances`, caméras, `dashboardType`, `dirtLevelMax`, `damageMapScale` repris du modèle ; `wheelScale` conservé.
+- `handling.meta` : comportement du modèle (traction, suspension, freins, direction, anti-roulis, centre de masse, dégâts) ; masse, traînée, poussée, vitesse de pointe (119) et 5 rapports conservés.
+
 ## 0.1.6 — 2026-10-09
 - Conduite : vitesse de pointe réduite de 15 % (`fInitialDriveMaxFlatVel` 140 → 119) ; 5 rapports au lieu de 4, ce qui ralentit aussi nettement la marche arrière.
 

@@ -16,7 +16,7 @@
   <startupScript />
   <scriptCallstackSize value="0" />
   <type>EXTRACONTENT_COMPAT_PACK</type>
-  <order value="1000" />
+  <order value="9" />
   <minimumConstrainedVersion value="0" />
   <isLevelPack value="false" />
   <hasHDPatch value="false" />
