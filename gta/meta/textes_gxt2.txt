@@ -1,11 +1,16 @@
-NOM D'AFFICHAGE DU VÉHICULE — entrées à ajouter dans global.gxt2 (langue : américain, et éventuellement française)
+NOM D'AFFICHAGE DU VÉHICULE — textes à placer dans le DLC (même organisation que le pack citroends23)
 
-Clé (gameName, vehicles.meta)   Texte
-PHANTOMV                        Rolls-Royce Phantom V (Park Ward)
-ROLLS                           Rolls-Royce
+Entrées du fichier .gxt2 (clé en clair ; le jeu la stocke sous forme de hash joaat) :
 
+Clé (origine, vehicles.meta)      Hash joaat   Texte
+PHANTOMV  (gameName)              0x67152653   Rolls-Royce Phantom V (Park Ward)
+ROLLS     (marque)                0x0DA57748   Rolls-Royce
+phantomv  (modelName, optionnel)  0x67152653   Phantom V      <- même clé que PHANTOMV (insensible à la casse) : ne pas l'ajouter
+
+Organisation attendue (d'après le DLC citroends23, dlctext.meta avec hasGlobalTextFile = true) :
+  dlc.rpf > x64 > data > lang > frenchdlc.rpf > <fichier .gxt2>
 Procédure (OpenIV, mode édition activé) :
-1. Copier le fichier global.gxt2 de la langue utilisée (x64b.rpf > data > lang > american.rpf ; le chemin exact peut varier selon la version du jeu) vers le même chemin dans le dossier « mods ».
-2. Ouvrir ce fichier copié dans l'éditeur de texte d'OpenIV.
-3. Ajouter les deux entrées ci-dessus (clé en MAJUSCULES, texte exact avec majuscules, tiret et parenthèses), puis enregistrer.
-4. Répéter pour chaque langue souhaitée (french.rpf, par exemple).
+1. Dans le DLC de la Phantom, créer x64/data/lang/frenchdlc.rpf (ou copier celui de la Citroën).
+2. Y placer le fichier .gxt2 (même nom que dans le DLC de la Citroën), en y remplaçant les trois entrées de la Citroën
+   par les deux entrées ci-dessus.
+3. Répéter pour les autres langues voulues (americandlc.rpf, etc.).
