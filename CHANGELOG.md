@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 — 2026-11-06
+Modèle v2 (`phantomv-v2.blend`), validé en jeu.
+- Une seule roue (`wheel_lf`) portée par le squelette, comme le pack citroends23 ; matériaux de la jante, du disque et de la partie noire passés au shader `vehicle_tire`.
+- Conducteur placé à gauche (os `seat_dside_f` et `seat_pside_f` inversés).
+- MOD-23, plantage en collision : niveaux de détail Medium (environ 50 %), Low (environ 25 %) et Very Low (environ 10 %) créés par décimation pour les 24 pièces visuelles, roue comprise, avec `Flags*` = 3.
+- Textures de la v2 reliées en chemins relatifs (`Natifs/textures/`).
+
 ## 1.0.0 — 2026-11-05
 Première version stable : validée en jeu (0.1.11).
 - Véhicule complet en modèle skinné ; portes, capot, coffre, roues, vitres cassables, limites de rotation.
